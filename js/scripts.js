@@ -66,10 +66,6 @@ function newGame() {
   }
 }
 
-function playerPick(playerPick) {
-    console.log(playerPick);
-}
-
 var x = Math.random();
 
 Math.floor(Math.random()*3)
@@ -80,18 +76,11 @@ function getComputerPick() {
     return possiblePicks[Math.floor(Math.random()*3)];
 }
 
-//player i komputer wybiera spośród: papier, kamień, nożyce:
+//player i komputer wybierają spośród: papier, kamień, nożyce:
 var playerPickElem = document.getElementById('js-playerPick'),
     computerPickElem = document.getElementById('js-computerPick'),
     playerResultElem = document.getElementById('js-playerResult'),
     computerResultElem = document.getElementById('js-computerResult');
-
-function playerPick(playerPick) {
-    var computerPick = getComputerPick();
-    
-    playerPickElem.innerHTML = playerPick;
-    computerPickElem.innerHTML = computerPick;
-}
 
 function checkRoundWinner(playerPick, computerPick) {
   playerResultElem.innerHTML = computerResultElem.innerHTML = '';
@@ -116,6 +105,8 @@ function checkRoundWinner(playerPick, computerPick) {
         computer.score++;
     setGamePoints();
     }
+  if((player.score == 10) || (computer.score == 10))
+  endOfTheGame();
 }
 
 function playerPick(playerPick) {
